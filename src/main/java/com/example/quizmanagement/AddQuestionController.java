@@ -5,12 +5,17 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 public class AddQuestionController {
 	@FXML
 	private Button goBack;
 	
+	@FXML
+	private Label clickText;
+	@FXML
+	private Button submit;
 	@FXML
 	private void onClickGoBack() throws Exception{
 		Stage stage = (Stage) goBack.getScene().getWindow();
@@ -20,5 +25,9 @@ public class AddQuestionController {
 		primaryStage.setTitle("Online Java Quiz Management System");
 		primaryStage.setScene(new Scene(root, 400, 600));
 		primaryStage.show();
+	}
+	@FXML
+	private void onClickSubmit() {
+		clickText.setText("Button clicked");
 	}
 }
