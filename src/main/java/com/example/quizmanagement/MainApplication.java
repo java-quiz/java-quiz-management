@@ -11,8 +11,8 @@ public class MainApplication extends Application {
 	@Override
 	public void start(Stage stage) throws IOException {
 		FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("main-view.fxml"));
-		Scene scene = new Scene(fxmlLoader.load(), 820, 640);
-		stage.setTitle("Online java quiz management system");
+		Scene scene = new Scene(fxmlLoader.load(), 400, 600);
+		stage.setTitle("Online Java Quiz Management System");
 		stage.setScene(scene);
 		stage.show();
 	}
