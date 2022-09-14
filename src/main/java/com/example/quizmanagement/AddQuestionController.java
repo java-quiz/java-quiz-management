@@ -17,8 +17,8 @@ public class AddQuestionController {
 		stage.close();
 		Stage primaryStage = new Stage();
 		Parent root = FXMLLoader.load(getClass().getResource("main-view.fxml"));
-		primaryStage.setTitle("Add question");
-		primaryStage.setScene(new Scene(root, 800, 500));
+		primaryStage.setTitle("Online Java Quiz Management System");
+		primaryStage.setScene(new Scene(root, 400, 600));
 		primaryStage.show();
 	}
 }

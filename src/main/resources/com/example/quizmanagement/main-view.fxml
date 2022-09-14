@@ -11,7 +11,7 @@
 	</padding>
    <ImageView fitHeight="282.0" fitWidth="356.0" pickOnBounds="true">
       <image>
-         <Image url="@../../../../img/quiz.png" />
+         <Image url="@../../../img/quiz.png" />
       </image>
    </ImageView>
 	

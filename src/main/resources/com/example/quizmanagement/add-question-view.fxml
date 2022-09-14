@@ -9,7 +9,7 @@
    <children>
       <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../img/quiz.png" />
+            <Image url="@../../../img/quiz.png" />
          </image></ImageView>
       <Label text="Label" />
       <TextField>

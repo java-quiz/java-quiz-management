@@ -22,7 +22,7 @@ public class MainController {
 		Stage primaryStage = new Stage();
 		Parent root = FXMLLoader.load(getClass().getResource("add-question-view.fxml"));
 		primaryStage.setTitle("Add question");
-		primaryStage.setScene(new Scene(root, 800, 500));
+		primaryStage.setScene(new Scene(root, 400, 600));
 		primaryStage.show();
 	}
 	@FXML
