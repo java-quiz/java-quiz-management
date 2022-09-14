@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<VBox xmlns:fx="http://javafx.com/fxml"
+      xmlns="http://javafx.com/javafx"
+      fx:controller="com.example.quizmanagement.QuizController"
+      prefHeight="400.0" prefWidth="600.0">
+	
+	<ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+		<image>
+			<Image url="@../../../img/quiz.png"/>
+		</image>
+	</ImageView>
+	
+	<HBox alignment="BOTTOM_CENTER" prefHeight="100.0" prefWidth="200.0">
+		<children>
+			<Button fx:id="goBack" mnemonicParsing="false" onAction="#onClickGoBack" text="Go back"/>
+		</children>
+	</HBox>
+</VBox>
