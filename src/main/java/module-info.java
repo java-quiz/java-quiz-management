@@ -3,6 +3,8 @@ module com.example.quizmanagement {
 	requires javafx.fxml;
 	requires javafx.web;
 	
+	requires mysql.connector.java;
+	requires java.sql;
 	requires org.controlsfx.controls;
 	requires com.dlsc.formsfx;
 	requires validatorfx;
