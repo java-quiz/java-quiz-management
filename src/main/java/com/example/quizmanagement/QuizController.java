@@ -97,7 +97,40 @@ public class QuizController implements Initializable {
 	
 	@FXML
 	private void onClickStart() throws Exception {
-			
+		if (rs.getString("correct").equals(ans)) {
+			result++;
+		}
+		if (rs.next()) {
+			updateQuestion();
+		} else {
+//			question.setText(String.valueOf(result));
+			System.out.println(result);
+//			Stage stage = (Stage) goBack.getScene().getWindow();
+//			stage.close();
+//			Stage primaryStage = new Stage();
+//			Parent root = FXMLLoader.load(getClass().getResource("result-view.fxml"));
+//			primaryStage.setTitle("Online Java Quiz Management System");
+//			primaryStage.setScene(new Scene(root, 400, 600));
+//			primaryStage.show();
+			quizBox.getChildren().clear();
+			ObservableList<PieChart.Data> pieChartData =
+							FXCollections.observableArrayList(
+											new PieChart.Data(String.valueOf((((qsSize - result) / qsSize) * 100) + " %"), (((qsSize - result) / qsSize) * 100)),
+											new PieChart.Data(String.valueOf(((result / qsSize) * 100) + " %"), ((result / qsSize) * 100)));
+			final PieChart chart = new PieChart(pieChartData);
+			chart.setAnimated(true);
+			chart.setLegendVisible(false);
+			chart.setTitle("Quiz result");
+			quizBox.getChildren().add(chart);
+			applyCustomColorSequence(pieChartData, "red", "green");
+		}
+	}
+	
+	private void applyCustomColorSequence(ObservableList<PieChart.Data> pieChartData, String... pieColors) {
+		int i = 0;
+		for (PieChart.Data data : pieChartData) {
+			data.getNode().setStyle("-fx-pie-color: " + pieColors[i % pieColors.length] + ";");
+			i++;
 		}
 	}
 }
