@@ -13,6 +13,7 @@ import javafx.scene.chart.PieChart;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.net.URL;
@@ -34,6 +35,10 @@ public class QuizController implements Initializable {
 	private Button goBack;
 	@FXML
 	private Label question;
+	@FXML
+	private Label report;
+	@FXML
+	private HBox opBox;
 	
 	@Override
 	public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -59,7 +64,7 @@ public class QuizController implements Initializable {
 	private void updateQuestion() throws Exception {
 		quizBox.getChildren().clear();
 		quizBox.getChildren().add(new Label(rs.getString("Question")));
-		HBox opBox = new HBox();
+		opBox.getChildren().clear();
 		RadioButton o1 = new RadioButton(rs.getString("option1"));
 		RadioButton o2 = new RadioButton(rs.getString("option2"));
 		RadioButton o3 = new RadioButton(rs.getString("option3"));
@@ -97,32 +102,32 @@ public class QuizController implements Initializable {
 	
 	@FXML
 	private void onClickStart() throws Exception {
-		if (rs.getString("correct").equals(ans)) {
-			result++;
-		}
-		if (rs.next()) {
-			updateQuestion();
+		if (ans != null) {
+			report.setText("");
+			if (rs.getString("correct").equals(ans)) {
+				result++;
+				ans = null;
+			}
+			if (rs.next()) {
+				updateQuestion();
+			} else {
+				System.out.println(result);
+				quizBox.getChildren().clear();
+				ObservableList<PieChart.Data> pieChartData =
+								FXCollections.observableArrayList(
+												new PieChart.Data(String.valueOf((((qsSize - result) / qsSize) * 100) + " %"), (((qsSize - result) / qsSize) * 100)),
+												new PieChart.Data(String.valueOf(((result / qsSize) * 100) + " %"), ((result / qsSize) * 100)));
+				final PieChart chart = new PieChart(pieChartData);
+				chart.setAnimated(true);
+				chart.setLegendVisible(false);
+				chart.setTitle("Quiz result");
+				quizBox.getChildren().add(chart);
+				applyCustomColorSequence(pieChartData, "red", "green");
+			}
+			
 		} else {
-//			question.setText(String.valueOf(result));
-			System.out.println(result);
-//			Stage stage = (Stage) goBack.getScene().getWindow();
-//			stage.close();
-//			Stage primaryStage = new Stage();
-//			Parent root = FXMLLoader.load(getClass().getResource("result-view.fxml"));
-//			primaryStage.setTitle("Online Java Quiz Management System");
-//			primaryStage.setScene(new Scene(root, 400, 600));
-//			primaryStage.show();
-			quizBox.getChildren().clear();
-			ObservableList<PieChart.Data> pieChartData =
-							FXCollections.observableArrayList(
-											new PieChart.Data(String.valueOf((((qsSize - result) / qsSize) * 100) + " %"), (((qsSize - result) / qsSize) * 100)),
-											new PieChart.Data(String.valueOf(((result / qsSize) * 100) + " %"), ((result / qsSize) * 100)));
-			final PieChart chart = new PieChart(pieChartData);
-			chart.setAnimated(true);
-			chart.setLegendVisible(false);
-			chart.setTitle("Quiz result");
-			quizBox.getChildren().add(chart);
-			applyCustomColorSequence(pieChartData, "red", "green");
+			report.setText("Please select an option");
+			report.setTextFill(Color.RED);
 		}
 	}
 	
