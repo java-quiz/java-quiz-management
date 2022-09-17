@@ -51,13 +51,12 @@ public class QuizController implements Initializable {
 				rs.last();
 				qsSize = rs.getRow();
 				rs.beforeFirst();
-				System.out.println(qsSize);
 			}
 			if (rs.next()) {
 				updateQuestion();
 			}
 		} catch (Exception e) {
-			System.out.println(e);
+			question.setText("Error loading data from database");
 		}
 	}
 	
@@ -111,7 +110,6 @@ public class QuizController implements Initializable {
 			if (rs.next()) {
 				updateQuestion();
 			} else {
-				System.out.println(result);
 				quizBox.getChildren().clear();
 				ObservableList<PieChart.Data> pieChartData =
 								FXCollections.observableArrayList(
