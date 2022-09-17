@@ -105,7 +105,6 @@ public class QuizController implements Initializable {
 			report.setText("");
 			if (rs.getString("correct").equals(ans)) {
 				result++;
-				ans = null;
 			}
 			if (rs.next()) {
 				updateQuestion();
@@ -122,7 +121,7 @@ public class QuizController implements Initializable {
 				quizBox.getChildren().add(chart);
 				applyCustomColorSequence(pieChartData, "red", "green");
 			}
-			
+			ans = null;
 		} else {
 			report.setText("Please select an option");
 			report.setTextFill(Color.RED);
