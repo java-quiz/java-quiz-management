@@ -31,6 +31,7 @@ public class MainController {
 		stage.close();
 		Stage primaryStage = new Stage();
 		Parent root = FXMLLoader.load(getClass().getResource("quiz-view.fxml"));
+		root.getStylesheets().add(getClass().getResource("/com/example/quizmanagement/quiz.css").toExternalForm());
 		primaryStage.setTitle("Test");
 		primaryStage.setScene(new Scene(root, 400, 600));
 		primaryStage.show();
