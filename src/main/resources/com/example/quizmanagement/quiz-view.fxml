@@ -30,16 +30,15 @@
 		</children>
 	</VBox>
 	<VBox alignment="CENTER">
-		<Label fx:id="report"/>
 		<VBox.margin>
-			<Insets bottom="20.0"/>
+			<Insets bottom="20.0" left="30" right="30"/>
 		</VBox.margin>
+		<Label style="-fx-text-fill: red;" fx:id="report"/>
 	</VBox>
 	<HBox alignment="BOTTOM_CENTER" prefHeight="100.0" prefWidth="200.0">
-		<children>
-			<Button fx:id="goBack" mnemonicParsing="false" onAction="#onClickGoBack" text="Go back"/>
-			<Button fx:id="click" mnemonicParsing="false" onAction="#onClickStart" text="Start"/>
-		</children>
+		<Button fx:id="goBack" id="back-button" mnemonicParsing="false" onAction="#onClickGoBack"
+		        text="Exit"/>
+		<Button fx:id="click" id="next-button" mnemonicParsing="false" onAction="#onClickStart" text="Next"/>
 	</HBox>
 	<Pane prefHeight="200.0" prefWidth="200.0"/>
 </VBox>

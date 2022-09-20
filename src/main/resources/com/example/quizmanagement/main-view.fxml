@@ -16,6 +16,7 @@
 		</image>
 	</ImageView>
 	
-	<Button onAction="#onClickTestButton" fx:id="testButton" text="Take test"/>
-	<Button mnemonicParsing="false" text="Add new questions" fx:id="addButton" onAction="#onClickAddButton"/>
+	<Button id="test-button" onAction="#onClickTestButton" fx:id="testButton" text="Take test"
+	        styleClass="btn, btn-success, test-button"/>
+	<Button id="add-button" text="Add new questions" fx:id="addButton" onAction="#onClickAddButton"/>
 </VBox>
