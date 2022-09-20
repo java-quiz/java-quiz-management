@@ -1,0 +1,15 @@
+#test-button{
+  -fx-border-width: 5px;
+  -fx-fill: #ff0000;
+  -fx-background-color: #6c63ff;
+	-fx-background-radius: 10px;
+	-fx-padding: 8px;
+  -fx-text-fill: white;
+}
+#add-button{
+	-fx-border-width: 0px;
+	-fx-background-color: #fa6f66;
+	-fx-background-radius: 10px;
+	-fx-padding: 8px;
+	-fx-text-fill: white;
+}

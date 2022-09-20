@@ -1,0 +1,16 @@
+#next-button{
+  -fx-background-color: #6c63ff;
+  -fx-padding: 13px;
+  -fx-border-insets: 5px;
+  -fx-background-insets: 5px;
+  -fx-text-fill: white;
+	-fx-background-radius: 10px;
+}
+#back-button{
+	-fx-background-color: #fa6f66;
+	-fx-background-radius: 10px;
+  -fx-padding: 13px;
+  -fx-border-insets: 5px;
+  -fx-background-insets: 5px;
+  -fx-text-fill: white;
+}
