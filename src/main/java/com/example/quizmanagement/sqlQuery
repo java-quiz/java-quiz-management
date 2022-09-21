@@ -1,0 +1,9 @@
+CREATE TABLE `Quize-Management`. `userAccounts`(
+	`id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    `Name` VARCHAR(45) NOT NULL,
+    `Username` VARCHAR(45) NOT NULL,
+    `Password` VARCHAR(45) NOT NULL,
+    PRIMARY KEY(`id`),
+    UNIQUE INDEX `id_UNIQUE` (`id` ASC),
+    UNIQUE INDEX `Username_UNIQUE` (`Username` ASC)
+);
