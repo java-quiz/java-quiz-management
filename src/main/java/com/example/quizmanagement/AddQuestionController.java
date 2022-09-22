@@ -29,17 +29,7 @@ public class AddQuestionController {
 	@FXML
 	private VBox container;
 	@FXML
-	private TextField op1;
-	@FXML
-	private TextField op2;
-	@FXML
-	private TextField op3;
-	@FXML
-	private TextField op4;
-	@FXML
-	private TextField cro;
-	@FXML
-	private Label clickText;
+	private TextField op1, op2, op3, op4, cro;
 	@FXML
 	private Button submit;
 
@@ -59,8 +49,9 @@ public class AddQuestionController {
 	private void onClickSubmit() throws Exception {
 		if (op1.getText().equals("") || op2.getText().equals("") || op3.getText().equals("") || op4.getText().equals("") || cro.getText().equals("") || question.getText().equals("")) {
 			error.setText("Please fill all the fields");
-		} else if (!cro.getText().equals(op1.getText()) || !cro.getText().equals(op2.getText()) || !cro.getText().equals(op3.getText()) || !cro.getText().equals(op4.getText())) {
+		} else if (!cro.getText().equals(op1.getText()) && !cro.getText().equals(op2.getText()) && !cro.getText().equals(op3.getText()) && !cro.getText().equals(op4.getText())) {
 			error.setText("Correct ans doesn't match any of the above options");
+			System.out.println(op1.getText() + op2.getText() + op3.getText() + op4.getText() + cro.getText());
 		} else {
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/quiz", "root", "");

@@ -88,7 +88,7 @@
 						</Button>
 					</VBox>
 					<VBox>
-						<Button fx:id="blue-button" id="submit-button" mnemonicParsing="false" onAction="#onClickSubmit"
+						<Button id="blue-button" mnemonicParsing="false" onAction="#onClickSubmit"
 						        text="Submit">
 							<VBox.margin>
 								<Insets left="5.0"/>

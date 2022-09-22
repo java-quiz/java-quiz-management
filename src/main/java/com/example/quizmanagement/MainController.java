@@ -19,14 +19,15 @@ public class MainController {
 		Stage stage = (Stage) addButton.getScene().getWindow();
 		stage.close();
 		Stage primaryStage = new Stage();
-		if (Credentials.isLoggedIn() == true) {
+		System.out.println(Credentials.isLoggedIn());
+		if (Credentials.isLoggedIn()) {
 			Parent root = FXMLLoader.load(getClass().getResource("add-view.fxml"));
 			root.getStylesheets().add(getClass().getResource("/com/example/quizmanagement/styles.css").toExternalForm());
 			primaryStage.setTitle("Add question");
 			primaryStage.setScene(new Scene(root, 400, 600));
 			primaryStage.show();
 		} else {
-			Parent root = FXMLLoader.load(getClass().getResource("add-view.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("login-view.fxml"));
 			root.getStylesheets().add(getClass().getResource("/com/example/quizmanagement/styles.css").toExternalForm());
 			primaryStage.setTitle("Login");
 			primaryStage.setScene(new Scene(root, 400, 600));

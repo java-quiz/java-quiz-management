@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<VBox xmlns:fx="http://javafx.com/fxml/1" prefHeight="400.0" prefWidth="600.0"
+      xmlns="http://javafx.com/javafx/11.0.14-internal" fx:controller="com.example.quizmanagement.LoginController">
+	<VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+		<children>
+
+			<ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+				<image>
+					<Image url="@../../../img/quiz.png"/>
+				</image>
+			</ImageView>
+		</children>
+	</VBox>
+	<VBox alignment="CENTER">
+		<VBox.margin>
+			<Insets bottom="20.0" left="100.0" right="100.0"/>
+		</VBox.margin>
+		<Label fx:id="error" style="-fx-text-fill: red;"/>
+		<TextField fx:id="username" promptText="Username">
+			<VBox.margin>
+				<Insets bottom="10.0"/>
+			</VBox.margin>
+		</TextField>
+		<TextField fx:id="pass" promptText="Password">
+			<VBox.margin>
+				<Insets top="10.0"/>
+			</VBox.margin>
+		</TextField>
+	</VBox>
+	<HBox alignment="CENTER">
+		<children>
+			<Button id="blue-button" fx:id="cancel" mnemonicParsing="false" onAction="#onCancel" text="Cancel">
+				<HBox.margin>
+					<Insets right="10.0"/>
+				</HBox.margin>
+			</Button>
+			<Button id="purple-button" fx:id="login" mnemonicParsing="false" onAction="#onLogin" text="Login">
+				<HBox.margin>
+					<Insets left="10.0"/>
+				</HBox.margin>
+			</Button>
+		</children>
+	</HBox>
+</VBox>
