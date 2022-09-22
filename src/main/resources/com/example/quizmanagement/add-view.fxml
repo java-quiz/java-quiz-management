@@ -9,7 +9,7 @@
       xmlns="http://javafx.com/javafx/11.0.14-internal"
       fx:controller="com.example.quizmanagement.AddQuestionController">
 	<children>
-		<Label text="Label" fx:id="username">
+		<Label text="Label" fx:id="username" id="welcome-text">
 			<VBox.margin>
 				<Insets top="20.0"/>
 			</VBox.margin>
