@@ -79,8 +79,22 @@
 			</Label>
 			<HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
 				<children>
-					<Button fx:id="goBack" mnemonicParsing="false" onAction="#onClickGoBack" text="Go back"/>
-					<Button fx:id="submit" mnemonicParsing="false" onAction="#onClickSubmit" text="Submit"/>
+					<VBox>
+						<Button fx:id="goBack" id="purple-button" mnemonicParsing="false" onAction="#onClickGoBack"
+						        text="Go back">
+							<VBox.margin>
+								<Insets right="5.0"/>
+							</VBox.margin>
+						</Button>
+					</VBox>
+					<VBox>
+						<Button fx:id="blue-button" id="submit-button" mnemonicParsing="false" onAction="#onClickSubmit"
+						        text="Submit">
+							<VBox.margin>
+								<Insets left="5.0"/>
+							</VBox.margin>
+						</Button>
+					</VBox>
 				</children>
 			</HBox>
 		</VBox>
