@@ -19,25 +19,18 @@ import java.sql.Statement;
 public class AddQuestionController {
 	@FXML
 	private Button goBack;
-
-
 	@FXML
 	private Label error;
 	@FXML
 	private TextArea question;
-
 	@FXML
 	private VBox container;
 	@FXML
 	private TextField op1, op2, op3, op4, cro;
-	@FXML
-	private Button submit;
 
 	@FXML
 	private void onClickGoBack() throws Exception {
-		Stage stage = (Stage) goBack.getScene().getWindow();
-		stage.close();
-		Stage primaryStage = new Stage();
+		Stage primaryStage = (Stage) goBack.getScene().getWindow();
 		Parent root = FXMLLoader.load(getClass().getResource("main-view.fxml"));
 		root.getStylesheets().add(getClass().getResource("/com/example/quizmanagement/styles.css").toExternalForm());
 		primaryStage.setTitle("Online Java Quiz Management System");

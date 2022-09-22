@@ -16,9 +16,7 @@ public class MainController {
 
 	@FXML
 	private void onClickAddButton() throws Exception {
-		Stage stage = (Stage) addButton.getScene().getWindow();
-		stage.close();
-		Stage primaryStage = new Stage();
+		Stage primaryStage = (Stage) addButton.getScene().getWindow();
 		System.out.println(Credentials.isLoggedIn());
 		if (Credentials.isLoggedIn()) {
 			Parent root = FXMLLoader.load(getClass().getResource("add-view.fxml"));
@@ -37,9 +35,7 @@ public class MainController {
 
 	@FXML
 	private void onClickTestButton() throws Exception {
-		Stage stage = (Stage) testButton.getScene().getWindow();
-		stage.close();
-		Stage primaryStage = new Stage();
+		Stage primaryStage = (Stage) testButton.getScene().getWindow();
 		Parent root = FXMLLoader.load(getClass().getResource("quiz-view.fxml"));
 		root.getStylesheets().add(getClass().getResource("/com/example/quizmanagement/styles.css").toExternalForm());
 		primaryStage.setTitle("Test");

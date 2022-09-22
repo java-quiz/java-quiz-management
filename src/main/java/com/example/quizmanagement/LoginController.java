@@ -30,7 +30,6 @@ public class LoginController {
 		if (username.getText().equals("") || pass.getText().equals("")) {
 			error.setText("Please fill all fields");
 		} else {
-			// convert pass.getText() to md5
 			MessageDigest md = MessageDigest.getInstance("MD5");
 			byte[] bytes = md.digest(pass.getText().getBytes());
 			BigInteger no = new BigInteger(1, bytes);
@@ -46,9 +45,7 @@ public class LoginController {
 							"`password` = " + "'" + hashedPass + "'");
 			if (rs != null && rs.next()) {
 				Credentials.setLoggedIn(true);
-				Stage stage = (Stage) cancel.getScene().getWindow();
-				stage.close();
-				Stage primaryStage = new Stage();
+				Stage primaryStage = (Stage) cancel.getScene().getWindow();
 				Parent root = FXMLLoader.load(getClass().getResource("add-view.fxml"));
 				root.getStylesheets().add(getClass().getResource("/com/example/quizmanagement/styles.css").toExternalForm());
 				primaryStage.setTitle("Online Java Quiz Management System");
@@ -62,9 +59,7 @@ public class LoginController {
 
 	@FXML
 	private void onCancel() throws Exception {
-		Stage stage = (Stage) cancel.getScene().getWindow();
-		stage.close();
-		Stage primaryStage = new Stage();
+		Stage primaryStage = (Stage) cancel.getScene().getWindow();
 		Parent root = FXMLLoader.load(getClass().getResource("main-view.fxml"));
 		root.getStylesheets().add(getClass().getResource("/com/example/quizmanagement/styles.css").toExternalForm());
 		primaryStage.setTitle("Online Java Quiz Management System");

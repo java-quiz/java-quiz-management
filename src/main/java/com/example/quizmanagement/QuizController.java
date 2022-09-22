@@ -87,9 +87,7 @@ public class QuizController implements Initializable {
 
 	@FXML
 	private void onClickGoBack() throws Exception {
-		Stage stage = (Stage) goBack.getScene().getWindow();
-		stage.close();
-		Stage primaryStage = new Stage();
+		Stage primaryStage = (Stage) goBack.getScene().getWindow();
 		Parent root = FXMLLoader.load(getClass().getResource("main-view.fxml"));
 		root.getStylesheets().add(getClass().getResource("/com/example/quizmanagement/styles.css").toExternalForm());
 		primaryStage.setTitle("Online Java Quiz Management System");
