@@ -15,8 +15,8 @@
 			<Image url="@../../../img/quiz.png"/>
 		</image>
 	</ImageView>
-	
-	<Button id="test-button" onAction="#onClickTestButton" fx:id="testButton" text="Take test"
+
+	<Button id="blue-button" onAction="#onClickTestButton" fx:id="testButton" text="Take test"
 	        styleClass="btn, btn-success, test-button"/>
-	<Button id="add-button" text="Add new questions" fx:id="addButton" onAction="#onClickAddButton"/>
+	<Button id="purple-button" text="Add new questions" fx:id="addButton" onAction="#onClickAddButton"/>
 </VBox>
