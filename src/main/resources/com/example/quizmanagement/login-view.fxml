@@ -27,11 +27,11 @@
 				<Insets bottom="10.0"/>
 			</VBox.margin>
 		</TextField>
-		<TextField fx:id="pass" promptText="Password">
+		<PasswordField fx:id="pass" promptText="Password">
 			<VBox.margin>
 				<Insets top="10.0"/>
 			</VBox.margin>
-		</TextField>
+		</PasswordField>
 	</VBox>
 	<HBox alignment="CENTER">
 		<children>

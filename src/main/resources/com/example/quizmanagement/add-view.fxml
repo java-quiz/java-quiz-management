@@ -2,17 +2,42 @@
 
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.effect.Glow?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.Font?>
 <VBox xmlns:fx="http://javafx.com/fxml/1" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity"
       minHeight="-Infinity"
       minWidth="-Infinity" prefHeight="662.0" prefWidth="843.0"
       xmlns="http://javafx.com/javafx/11.0.14-internal"
       fx:controller="com.example.quizmanagement.AddQuestionController">
 	<children>
-		<Label text="Label" fx:id="username" id="welcome-text">
+		<Label fx:id="username" textAlignment="CENTER">
 			<VBox.margin>
 				<Insets top="20.0"/>
 			</VBox.margin>
+			<font>
+				<Font name="Hack Bold Italic" size="30.0"/>
+			</font>
+			<effect>
+				<Glow/>
+			</effect>
+			<textFill>
+				<LinearGradient endX="1.0" endY="1.0">
+					<stops>
+						<Stop>
+							<color>
+								<Color red="0.9803921580314636" green="0.43529412150382996" blue="0.4000000059604645"/>
+							</color>
+						</Stop>
+						<Stop offset="1.0">
+							<color>
+								<Color red="0.42352941632270813" green="0.38823530077934265" blue="1.0"/>
+							</color>
+						</Stop>
+					</stops>
+				</LinearGradient>
+			</textFill>
 
 		</Label>
 		<VBox fx:id="container" alignment="CENTER" minHeight="450.0">

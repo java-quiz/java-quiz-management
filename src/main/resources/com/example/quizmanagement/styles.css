@@ -13,9 +13,3 @@
 	-fx-padding: 8px;
 	-fx-text-fill: white;
 }
-
-#welcome-text {
- -fx-font-size: 30px;
- -fx-font-weight: bold;
- -fx-text-fill: green;
-}
