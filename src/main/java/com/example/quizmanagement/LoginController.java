@@ -44,6 +44,7 @@ public class LoginController {
 							"`password` = " + "'" + hashedPass + "'");
 			if (rs != null && rs.next()) {
 				Credentials.setLoggedIn(true);
+				Credentials.setUsername(username.getText());
 				Stage primaryStage = (Stage) cancel.getScene().getWindow();
 				Parent root = FXMLLoader.load(getClass().getResource("add-view.fxml"));
 				root.getStylesheets().add(getClass().getResource("/com/example/quizmanagement/styles.css").toExternalForm());

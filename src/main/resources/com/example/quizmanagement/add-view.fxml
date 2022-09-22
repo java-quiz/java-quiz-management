@@ -2,19 +2,19 @@
 
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
 <VBox xmlns:fx="http://javafx.com/fxml/1" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity"
       minHeight="-Infinity"
-      minWidth="-Infinity" prefHeight="662.0" prefWidth="843.0" xmlns="http://javafx.com/javafx/16"
+      minWidth="-Infinity" prefHeight="662.0" prefWidth="843.0"
+      xmlns="http://javafx.com/javafx/11.0.14-internal"
       fx:controller="com.example.quizmanagement.AddQuestionController">
 	<children>
-		<ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-			<image>
-				<Image url="@../../../img/quiz.png"/>
-			</image>
-		</ImageView>
+		<Label text="Label" fx:id="username">
+			<VBox.margin>
+				<Insets top="20.0"/>
+			</VBox.margin>
+
+		</Label>
 		<VBox fx:id="container" alignment="CENTER" minHeight="450.0">
 			<Label text="Ask your question?">
 				<VBox.margin>
@@ -80,16 +80,14 @@
 			<HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
 				<children>
 					<VBox>
-						<Button fx:id="goBack" id="purple-button" mnemonicParsing="false" onAction="#onClickGoBack"
-						        text="Go back">
+						<Button id="purple-button" fx:id="goBack" mnemonicParsing="false" onAction="#onClickGoBack" text="Go back">
 							<VBox.margin>
 								<Insets right="5.0"/>
 							</VBox.margin>
 						</Button>
 					</VBox>
 					<VBox>
-						<Button id="blue-button" mnemonicParsing="false" onAction="#onClickSubmit"
-						        text="Submit">
+						<Button id="blue-button" mnemonicParsing="false" onAction="#onClickSubmit" text="Submit">
 							<VBox.margin>
 								<Insets left="5.0"/>
 							</VBox.margin>
