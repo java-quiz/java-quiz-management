@@ -37,7 +37,6 @@ public class LoginController {
 			while (hashedPass.length() < 32) {
 				hashedPass = "0" + hashedPass;
 			}
-			System.out.println(hashedPass);
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/quiz", "root", "");
 			Statement st = con.createStatement();

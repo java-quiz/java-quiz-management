@@ -17,7 +17,6 @@ public class MainController {
 	@FXML
 	private void onClickAddButton() throws Exception {
 		Stage primaryStage = (Stage) addButton.getScene().getWindow();
-		System.out.println(Credentials.isLoggedIn());
 		if (Credentials.isLoggedIn()) {
 			Parent root = FXMLLoader.load(getClass().getResource("add-view.fxml"));
 			root.getStylesheets().add(getClass().getResource("/com/example/quizmanagement/styles.css").toExternalForm());
