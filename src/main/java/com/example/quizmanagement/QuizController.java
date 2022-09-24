@@ -12,6 +12,8 @@ import javafx.scene.Scene;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -25,7 +27,7 @@ import java.util.ResourceBundle;
 public class QuizController implements Initializable {
 
 	ResultSet rs;
-	float qsSize;
+	float qsSize, progress = 0;
 	String ans;
 	float result = 0;
 	@FXML
@@ -35,7 +37,9 @@ public class QuizController implements Initializable {
 	@FXML
 	private Label question, report;
 	@FXML
-	private HBox opBox;
+	private HBox opBox1, opBox2;
+	@FXML
+	private ProgressBar pb;
 
 	@Override
 	public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -53,14 +57,18 @@ public class QuizController implements Initializable {
 				updateQuestion();
 			}
 		} catch (Exception e) {
-			question.setText("Error loading data from database");
+			report.setText("Error loading data from database");
 		}
 	}
 
 	private void updateQuestion() throws Exception {
 		quizBox.getChildren().clear();
-		quizBox.getChildren().add(new Label(rs.getString("Question")));
-		opBox.getChildren().clear();
+		//		Label quesLabel = new Label(rs.getString("Question"));
+		question.setText(rs.getString("Question"));
+		//		quesLabel.getStyleClass().setAll("question-label");
+		quizBox.getChildren().add(question);
+		opBox1.getChildren().clear();
+		opBox2.getChildren().clear();
 		RadioButton o1 = new RadioButton(rs.getString("option1"));
 		RadioButton o2 = new RadioButton(rs.getString("option2"));
 		RadioButton o3 = new RadioButton(rs.getString("option3"));
@@ -77,11 +85,19 @@ public class QuizController implements Initializable {
 		o2.setToggleGroup(optionGroup);
 		o3.setToggleGroup(optionGroup);
 		o4.setToggleGroup(optionGroup);
-		opBox.getChildren().add(o1);
-		opBox.getChildren().add(o2);
-		opBox.getChildren().add(o3);
-		opBox.getChildren().add(o4);
-		quizBox.getChildren().add(opBox);
+		opBox1.getChildren().add(o1);
+		Region region1 = new Region();
+		HBox.setHgrow(region1, Priority.ALWAYS);
+		opBox1.getChildren().add(region1);
+		opBox1.getChildren().add(o2);
+
+		opBox2.getChildren().add(o3);
+		Region region2 = new Region();
+		HBox.setHgrow(region2, Priority.ALWAYS);
+		opBox2.getChildren().add(region2);
+		opBox2.getChildren().add(o4);
+		quizBox.getChildren().add(opBox1);
+		quizBox.getChildren().add(opBox2);
 
 	}
 
@@ -98,6 +114,7 @@ public class QuizController implements Initializable {
 	@FXML
 	private void onClickStart() throws Exception {
 		if (ans != null) {
+			pb.setProgress(progress += (1 / qsSize));
 			report.setText("");
 			if (rs.getString("correct").equals(ans)) {
 				result++;
