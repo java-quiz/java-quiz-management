@@ -125,8 +125,10 @@ public class QuizController implements Initializable {
 				quizBox.getChildren().clear();
 				ObservableList<PieChart.Data> pieChartData =
 								FXCollections.observableArrayList(
-												new PieChart.Data(String.valueOf((((qsSize - result) / qsSize) * 100) + " %"), (((qsSize - result) / qsSize) * 100)),
-												new PieChart.Data(String.valueOf(((result / qsSize) * 100) + " %"), ((result / qsSize) * 100)));
+												new PieChart.Data(String.valueOf(Math.round(((qsSize - result) / qsSize) * 100) + " %"),
+																(((qsSize - result) / qsSize) * 100)),
+												new PieChart.Data(String.valueOf(Math.round((result / qsSize) * 100) + " %"),
+																((result / qsSize) * 100)));
 				final PieChart chart = new PieChart(pieChartData);
 				chart.setAnimated(true);
 				chart.setLegendVisible(false);
