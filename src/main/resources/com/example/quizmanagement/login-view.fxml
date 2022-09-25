@@ -27,7 +27,7 @@
 				<Insets bottom="10.0"/>
 			</VBox.margin>
 		</TextField>
-		<PasswordField fx:id="pass" promptText="Password">
+		<PasswordField fx:id="pass" onKeyPressed="#setOnKeyPressed" promptText="Password">
 			<VBox.margin>
 				<Insets top="10.0"/>
 			</VBox.margin>
