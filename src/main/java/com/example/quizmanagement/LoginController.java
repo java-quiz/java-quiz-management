@@ -28,34 +28,39 @@ public class LoginController {
 	private Button cancel, login;
 
 	@FXML
-	private void onLogin() throws Exception {
-		if (username.getText().equals("") || pass.getText().equals("")) {
-			error.setText("Please fill all fields");
-		} else {
-			MessageDigest md = MessageDigest.getInstance("MD5");
-			byte[] bytes = md.digest(pass.getText().getBytes());
-			BigInteger no = new BigInteger(1, bytes);
-			String hashedPass = no.toString(16);
-			while (hashedPass.length() < 32) {
-				hashedPass = "0" + hashedPass;
-			}
-			Class.forName("com.mysql.jdbc.Driver");
-			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/quiz", "root", "");
-			Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery("select * from `users` where `username` = '" + username.getText() + "' and " +
-							"`password` = " + "'" + hashedPass + "'");
-			if (rs != null && rs.next()) {
-				Credentials.setLoggedIn(true);
-				Credentials.setUsername(username.getText());
-				Stage primaryStage = (Stage) cancel.getScene().getWindow();
-				Parent root = FXMLLoader.load(getClass().getResource("add-view.fxml"));
-				root.getStylesheets().add(getClass().getResource("/com/example/quizmanagement/styles.css").toExternalForm());
-				primaryStage.setTitle("Online Java Quiz Management System");
-				primaryStage.setScene(new Scene(root, 400, 600));
-				primaryStage.show();
+	private void onLogin() {
+		try {
+			if (username.getText().equals("") || pass.getText().equals("")) {
+				error.setText("Please fill all fields");
 			} else {
-				error.setText("Incorrect username or password");
+				MessageDigest md = MessageDigest.getInstance("MD5");
+				byte[] bytes = md.digest(pass.getText().getBytes());
+				BigInteger no = new BigInteger(1, bytes);
+				String hashedPass = no.toString(16);
+				while (hashedPass.length() < 32) {
+					hashedPass = "0" + hashedPass;
+				}
+				Class.forName("com.mysql.jdbc.Driver");
+				Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/quiz", "root", "");
+				Statement st = con.createStatement();
+				ResultSet rs = st.executeQuery("select * from `users` where `username` = '" + username.getText() + "' and " +
+								"`password` = " + "'" + hashedPass + "'");
+				if (rs != null && rs.next()) {
+					Credentials.setLoggedIn(true);
+					Credentials.setUsername(username.getText());
+					Stage primaryStage = (Stage) cancel.getScene().getWindow();
+					Parent root = FXMLLoader.load(getClass().getResource("add-view.fxml"));
+					root.getStylesheets().add(getClass().getResource("/com/example/quizmanagement/styles.css").toExternalForm());
+					primaryStage.setTitle("Online Java Quiz Management System");
+					primaryStage.setScene(new Scene(root, 400, 600));
+					primaryStage.show();
+				} else {
+					error.setText("Incorrect username or password");
+				}
 			}
+
+		} catch (Exception e) {
+			error.setText("Error connecting to database");
 		}
 	}
 
