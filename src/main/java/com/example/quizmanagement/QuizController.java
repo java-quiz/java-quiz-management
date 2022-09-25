@@ -33,7 +33,7 @@ public class QuizController implements Initializable {
 	@FXML
 	private VBox quizBox;
 	@FXML
-	private Button goBack;
+	private Button goBack, nextButton;
 	@FXML
 	private Label question, report;
 	@FXML
@@ -123,6 +123,7 @@ public class QuizController implements Initializable {
 				updateQuestion();
 			} else {
 				quizBox.getChildren().clear();
+				nextButton.setText("View result");
 				ObservableList<PieChart.Data> pieChartData =
 								FXCollections.observableArrayList(
 												new PieChart.Data(String.valueOf(Math.round(((qsSize - result) / qsSize) * 100) + " %"),
