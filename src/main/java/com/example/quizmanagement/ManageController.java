@@ -6,6 +6,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -24,7 +25,8 @@ public class ManageController implements Initializable {
 	private Button addButton;
 	@FXML
 	private VBox tableCon;
-	//	private TableView tableContainer;
+	@FXML
+	private Label username;
 
 	@FXML
 	private void onAdd() throws Exception {
@@ -48,6 +50,7 @@ public class ManageController implements Initializable {
 
 	@Override
 	public void initialize(URL url, ResourceBundle resourceBundle) {
+		username.setText("Welcome, " + Credentials.getUsername());
 		TableView table = new TableView<QuestionTable>();
 		TableColumn qsCol = new TableColumn<QuestionTable, String>("Question");
 		TableColumn dlCol = new TableColumn<QuestionTable, String>("Action");
