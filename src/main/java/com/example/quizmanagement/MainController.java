@@ -19,7 +19,7 @@ public class MainController {
 		Stage primaryStage = (Stage) addButton.getScene().getWindow();
 		Parent root;
 		if (Credentials.isLoggedIn()) {
-			root = FXMLLoader.load(getClass().getResource("add-view.fxml"));
+			root = FXMLLoader.load(getClass().getResource("manage-view.fxml"));
 			primaryStage.setTitle("Add question");
 		} else {
 			root = FXMLLoader.load(getClass().getResource("login-view.fxml"));
