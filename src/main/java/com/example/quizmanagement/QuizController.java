@@ -63,9 +63,7 @@ public class QuizController implements Initializable {
 
 	private void updateQuestion() throws Exception {
 		quizBox.getChildren().clear();
-		//		Label quesLabel = new Label(rs.getString("Question"));
-		question.setText(rs.getString("Question"));
-		//		quesLabel.getStyleClass().setAll("question-label");
+		question.setText(rs.getString("question"));
 		quizBox.getChildren().add(question);
 		opBox1.getChildren().clear();
 		opBox2.getChildren().clear();
@@ -126,17 +124,17 @@ public class QuizController implements Initializable {
 				btnContainer.getChildren().remove(nextButton);
 				ObservableList<PieChart.Data> pieChartData =
 								FXCollections.observableArrayList(
-												new PieChart.Data(String.valueOf(Math.round(((qsSize - result) / qsSize) * 100) + " %"),
-																(((qsSize - result) / qsSize) * 100)),
-												new PieChart.Data(String.valueOf(Math.round((result / qsSize) * 100) + " %"),
-																((result / qsSize) * 100)));
+												new PieChart.Data("Correct " + String.valueOf(Math.round((result / qsSize) * 100) + "% (" + Math.round(result) +
+																")"),
+																((result / qsSize) * 100)),
+												new PieChart.Data("Wrong " + String.valueOf(Math.round(((qsSize - result) / qsSize) * 100) +
+																"% (" + Math.round(qsSize - result) + ")"),
+																(((qsSize - result) / qsSize) * 100)));
 				final PieChart chart = new PieChart(pieChartData);
 				chart.setAnimated(true);
-				chart.setLegendVisible(false);
+				chart.setLabelsVisible(false);
 				chart.setTitle("Quiz result");
 				quizBox.getChildren().add(chart);
-				corLab.setText("Correct: " + Math.round(result));
-				wrnLab.setText("Wrong: " + Math.round(qsSize - result));
 			}
 			ans = null;
 		} else {
