@@ -37,7 +37,7 @@ public class QuizController implements Initializable {
 	@FXML
 	private Label question, report, corLab, wrnLab;
 	@FXML
-	private HBox opBox1, opBox2;
+	private HBox opBox1, opBox2, btnContainer;
 	@FXML
 	private ProgressBar pb;
 
@@ -123,7 +123,7 @@ public class QuizController implements Initializable {
 				updateQuestion();
 			} else {
 				quizBox.getChildren().clear();
-				nextButton.setText("View result");
+				btnContainer.getChildren().remove(nextButton);
 				ObservableList<PieChart.Data> pieChartData =
 								FXCollections.observableArrayList(
 												new PieChart.Data(String.valueOf(Math.round(((qsSize - result) / qsSize) * 100) + " %"),
