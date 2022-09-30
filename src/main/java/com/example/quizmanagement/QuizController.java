@@ -35,7 +35,7 @@ public class QuizController implements Initializable {
 	@FXML
 	private Button goBack, nextButton;
 	@FXML
-	private Label question, report;
+	private Label question, report, corLab, wrnLab;
 	@FXML
 	private HBox opBox1, opBox2;
 	@FXML
@@ -135,6 +135,8 @@ public class QuizController implements Initializable {
 				chart.setLegendVisible(false);
 				chart.setTitle("Quiz result");
 				quizBox.getChildren().add(chart);
+				corLab.setText("Correct: " + Math.round(result));
+				wrnLab.setText("Wrong: " + Math.round(qsSize - result));
 				applyCustomColorSequence(pieChartData, "red", "green");
 			}
 			ans = null;
