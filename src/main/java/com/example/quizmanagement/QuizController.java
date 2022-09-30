@@ -57,7 +57,7 @@ public class QuizController implements Initializable {
 				updateQuestion();
 			}
 		} catch (Exception e) {
-			report.setText("Error loading data from database");
+			report.setText("No question in found. Please try adding questions");
 		}
 	}
 
