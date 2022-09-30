@@ -56,6 +56,7 @@ public class ManageController implements Initializable {
 		TableColumn dlCol = new TableColumn<QuestionTable, String>("Action");
 		qsCol.setCellValueFactory(new PropertyValueFactory<QuestionTable, String>("Question"));
 		dlCol.setCellValueFactory(new PropertyValueFactory<QuestionTable, String>("Delete"));
+		dlCol.setStyle("-fx-alignment:CENTER");
 		table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 		table.getColumns().clear();
 		table.getColumns().add(qsCol);
@@ -66,13 +67,10 @@ public class ManageController implements Initializable {
 			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/quiz", "root", "");
 			Statement st = con.createStatement();
 			ResultSet rs = st.executeQuery("Select * from quiz_list");
-			//			dataTAble = FXCollections.observableArrayList();
 			while (rs.next()) {
-				//				tableContainer.setItems(rs.getString("Questinon"));
 				table.getItems().add(new QuestionTable(rs.getString("Question"), new Button("Delete")));
 			}
 		} catch (Exception e) {
-			//			report.setText("Error loading data from database");
 		}
 	}
 }
