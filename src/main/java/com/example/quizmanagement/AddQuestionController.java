@@ -34,7 +34,7 @@ public class AddQuestionController implements Initializable {
 	@FXML
 	private void onClickGoBack() throws Exception {
 		Stage primaryStage = (Stage) goBack.getScene().getWindow();
-		Parent root = FXMLLoader.load(getClass().getResource("main-view.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("manage-view.fxml"));
 		root.getStylesheets().add(getClass().getResource("/com/example/quizmanagement/styles.css").toExternalForm());
 		primaryStage.setTitle("Online Java Quiz Management System");
 		primaryStage.setScene(new Scene(root, 400, 600));
