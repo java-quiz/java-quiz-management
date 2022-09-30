@@ -137,7 +137,6 @@ public class QuizController implements Initializable {
 				quizBox.getChildren().add(chart);
 				corLab.setText("Correct: " + Math.round(result));
 				wrnLab.setText("Wrong: " + Math.round(qsSize - result));
-				applyCustomColorSequence(pieChartData, "red", "green");
 			}
 			ans = null;
 		} else {
@@ -145,11 +144,4 @@ public class QuizController implements Initializable {
 		}
 	}
 
-	private void applyCustomColorSequence(ObservableList<PieChart.Data> pieChartData, String... pieColors) {
-		int i = 0;
-		for (PieChart.Data data : pieChartData) {
-			data.getNode().setStyle("-fx-pie-color: " + pieColors[i % pieColors.length] + ";");
-			i++;
-		}
-	}
 }
