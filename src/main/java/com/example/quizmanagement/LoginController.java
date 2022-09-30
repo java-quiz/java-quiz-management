@@ -49,7 +49,7 @@ public class LoginController {
 					Credentials.setLoggedIn(true);
 					Credentials.setUsername(username.getText());
 					Stage primaryStage = (Stage) cancel.getScene().getWindow();
-					Parent root = FXMLLoader.load(getClass().getResource("add-view.fxml"));
+					Parent root = FXMLLoader.load(getClass().getResource("manage-view.fxml"));
 					root.getStylesheets().add(getClass().getResource("/com/example/quizmanagement/styles.css").toExternalForm());
 					primaryStage.setTitle("Online Java Quiz Management System");
 					primaryStage.setScene(new Scene(root, 400, 600));
