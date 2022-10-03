@@ -46,10 +46,11 @@ public class LoginController {
 				ResultSet rs = st.executeQuery("select * from `users` where `username` = '" + username.getText() + "' and " +
 								"`password` = " + "'" + hashedPass + "'");
 				if (rs != null && rs.next()) {
-					Credentials.setLoggedIn(true);
 					Credentials.setUsername(username.getText());
 					Stage primaryStage = (Stage) cancel.getScene().getWindow();
-					Parent root = FXMLLoader.load(getClass().getResource("manage-view.fxml"));
+					Parent root;
+					root = rs.getString("admin").equals("1") ? FXMLLoader.load(getClass().getResource("teacher-view.fxml")) :
+									FXMLLoader.load(getClass().getResource("student-view.fxml"));
 					root.getStylesheets().add(getClass().getResource("/com/example/quizmanagement/styles.css").toExternalForm());
 					primaryStage.setTitle("Online Java Quiz Management System");
 					primaryStage.setScene(new Scene(root, 400, 600));
@@ -67,7 +68,7 @@ public class LoginController {
 	@FXML
 	private void onCancel() throws Exception {
 		Stage primaryStage = (Stage) cancel.getScene().getWindow();
-		Parent root = FXMLLoader.load(getClass().getResource("main-view.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("loginstudent-view.fxml"));
 		root.getStylesheets().add(getClass().getResource("/com/example/quizmanagement/styles.css").toExternalForm());
 		primaryStage.setTitle("Online Java Quiz Management System");
 		primaryStage.setScene(new Scene(root, 400, 600));

@@ -14,7 +14,7 @@ public class MainApplication extends Application {
 
 	@Override
 	public void start(Stage stage) throws IOException {
-		FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("main-view.fxml"));
+		FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("login-view.fxml"));
 		Scene scene = new Scene(fxmlLoader.load(), 400, 600);
 		scene.getStylesheets().add(getClass().getResource("/com/example/quizmanagement/styles.css").toExternalForm());
 		stage.setTitle("Online Java Quiz Management System");

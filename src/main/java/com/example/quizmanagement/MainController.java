@@ -17,17 +17,33 @@ public class MainController {
 	@FXML
 	private void onClickAddButton() throws Exception {
 		Stage primaryStage = (Stage) addButton.getScene().getWindow();
-		Parent root;
-		if (Credentials.isLoggedIn()) {
-			root = FXMLLoader.load(getClass().getResource("manage-view.fxml"));
-			primaryStage.setTitle("Add question");
-		} else {
-			root = FXMLLoader.load(getClass().getResource("login-view.fxml"));
-			primaryStage.setTitle("Login");
-		}
+		Parent root = FXMLLoader.load(getClass().getResource("manage-view.fxml"));
+		primaryStage.setTitle("Add question");
 		root.getStylesheets().add(getClass().getResource("/com/example/quizmanagement/styles.css").toExternalForm());
 		primaryStage.setScene(new Scene(root, 400, 600));
 		primaryStage.show();
+	}
+
+	@FXML
+	private void onClickReportButton() throws Exception {
+		Stage primaryStage = (Stage) testButton.getScene().getWindow();
+		Parent root = FXMLLoader.load(getClass().getResource("student-report-view.fxml"));
+		root.getStylesheets().add(getClass().getResource("/com/example/quizmanagement/styles.css").toExternalForm());
+		primaryStage.setTitle("Test");
+		primaryStage.setScene(new Scene(root, 400, 600));
+		primaryStage.show();
+
+	}
+
+	@FXML
+	private void onClickFullReportButton() throws Exception {
+		Stage primaryStage = (Stage) testButton.getScene().getWindow();
+		Parent root = FXMLLoader.load(getClass().getResource("teacher-report-view.fxml"));
+		root.getStylesheets().add(getClass().getResource("/com/example/quizmanagement/styles.css").toExternalForm());
+		primaryStage.setTitle("Test");
+		primaryStage.setScene(new Scene(root, 400, 600));
+		primaryStage.show();
+
 	}
 
 	@FXML
