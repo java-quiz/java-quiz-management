@@ -1,9 +1,8 @@
 #blue-button{
   -fx-border-width: 5px;
-  -fx-fill: #ff0000;
   -fx-background-color: #6c63ff;
-	-fx-background-radius: 10px;
-	-fx-padding: 8px;
+  -fx-background-radius: 10px;
+  -fx-padding: 8px;
   -fx-text-fill: white;
 }
 #purple-button{
@@ -14,6 +13,13 @@
 	-fx-text-fill: white;
 }
 
+#red-button{
+	-fx-border-width: 0px;
+	-fx-background-color: red;
+	-fx-background-radius: 10px;
+	-fx-padding: 8px;
+	-fx-text-fill: white;
+}
 .question-label {
   -fx-font-family: Poppins, sans-serif;
   -fx-font-size: 20px;

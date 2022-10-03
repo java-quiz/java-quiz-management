@@ -57,6 +57,7 @@
 						<Insets right="10.0"/>
 					</HBox.margin>
 				</Button>
+				<Button id="red-button" mnemonicParsing="false" onAction="#deleteQs" text="Delete question"/>
 				<Button id="purple-button" fx:id="addButton" mnemonicParsing="false" onAction="#onAdd" text="Add question">
 					<HBox.margin>
 						<Insets left="10.0"/>
