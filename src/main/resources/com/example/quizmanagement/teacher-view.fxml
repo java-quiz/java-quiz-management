@@ -19,5 +19,5 @@
 
 	<Button id="blue-button" fx:id="testButton" onAction="#onClickFullReportButton" text="View full report"/>
 	<Button id="purple-button" fx:id="addButton" onAction="#onClickAddButton" text="Manage questions"/>
-	<Button mnemonicParsing="false" text="Button"/>
+	<Button mnemonicParsing="false" id="red-button" onAction="#onClickAccButton" text="Add new account"/>
 </VBox>
