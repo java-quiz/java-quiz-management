@@ -21,6 +21,9 @@ import java.sql.Statement;
 import java.util.ResourceBundle;
 
 public class ManageController implements Initializable {
+	TableView table = new TableView<QuestionTable>();
+	TableColumn qsCol = new TableColumn<QuestionTable, String>("Question");
+	TableColumn crCol = new TableColumn<QuestionTable, String>("Answer");
 	@FXML
 	private Button addButton;
 	@FXML
@@ -41,26 +44,34 @@ public class ManageController implements Initializable {
 	@FXML
 	private void onExit() throws Exception {
 		Stage primaryStage = (Stage) addButton.getScene().getWindow();
-		Parent root = FXMLLoader.load(getClass().getResource("main-view.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("teacher-view.fxml"));
 		root.getStylesheets().add(getClass().getResource("/com/example/quizmanagement/styles.css").toExternalForm());
 		primaryStage.setTitle("Test");
 		primaryStage.setScene(new Scene(root, 400, 600));
 		primaryStage.show();
 	}
 
+	@FXML
+	private void deleteQs() {
+		//		Object qsPos = table.getSelectionModel().getSelectedCells().get(0);
+		//		int row = qsPos.getRow();
+		//		TableView item = table.getItems().get(row);
+		//		ResultTable ques = table.getSelectionModel().getSelectedItem();
+		//		System.out.println(ques);
+		table.getItems().removeAll(table.getSelectionModel().getSelectedItem());
+		//										System.out.println(qs);
+	}
+
 	@Override
 	public void initialize(URL url, ResourceBundle resourceBundle) {
 		username.setText("Welcome, " + Credentials.getUsername());
-		TableView table = new TableView<QuestionTable>();
-		TableColumn qsCol = new TableColumn<QuestionTable, String>("Question");
-		TableColumn dlCol = new TableColumn<QuestionTable, String>("Action");
 		qsCol.setCellValueFactory(new PropertyValueFactory<QuestionTable, String>("Question"));
-		dlCol.setCellValueFactory(new PropertyValueFactory<QuestionTable, String>("Delete"));
-		dlCol.setStyle("-fx-alignment:CENTER");
+		crCol.setCellValueFactory(new PropertyValueFactory<QuestionTable, String>("Answer"));
+		crCol.setStyle("-fx-alignment:CENTER");
 		table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 		table.getColumns().clear();
 		table.getColumns().add(qsCol);
-		table.getColumns().add(dlCol);
+		table.getColumns().add(crCol);
 		tableCon.getChildren().add(table);
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
@@ -68,7 +79,8 @@ public class ManageController implements Initializable {
 			Statement st = con.createStatement();
 			ResultSet rs = st.executeQuery("Select * from quiz_list");
 			while (rs.next()) {
-				table.getItems().add(new QuestionTable(rs.getString("Question"), new Button("Delete")));
+				Button del = new Button("Delete");
+				table.getItems().add(new QuestionTable(rs.getString("Question"), rs.getString("correct")));
 			}
 		} catch (Exception e) {
 		}

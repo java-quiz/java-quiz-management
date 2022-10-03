@@ -1,18 +1,17 @@
 package com.example.quizmanagement;
 
-import javafx.scene.control.Button;
-
 public class QuestionTable {
 	private String question;
-	private Button delete;
+	private String answer;
 
 	public QuestionTable() {
 		this.question = "";
+		this.answer = "";
 	}
 
-	public QuestionTable(String question, Button delete) {
+	public QuestionTable(String question, String answer) {
 		this.question = question;
-		this.delete = delete;
+		this.answer = answer;
 	}
 
 	public String getQuestion() {
@@ -23,11 +22,11 @@ public class QuestionTable {
 		this.question = question;
 	}
 
-	public Button getDelete() {
-		return delete;
+	public String getAnswer() {
+		return answer;
 	}
 
-	public void setDelete(Button delete) {
-		this.delete = delete;
+	public void setAnswer(String answer) {
+		this.answer = answer;
 	}
 }
