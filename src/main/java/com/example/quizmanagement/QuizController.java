@@ -24,11 +24,14 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 public class QuizController implements Initializable {
 
 	ResultSet rs;
+	Statement st;
 	float qsSize, progress = 0;
 	String ans;
 	float result = 0;
@@ -48,7 +51,7 @@ public class QuizController implements Initializable {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/quiz", "root", "");
-			Statement st = con.createStatement();
+			st = con.createStatement();
 			rs = st.executeQuery("Select * from quiz_list");
 			if (rs != null) {
 				rs.last();
@@ -104,7 +107,7 @@ public class QuizController implements Initializable {
 	@FXML
 	private void onClickGoBack() throws Exception {
 		Stage primaryStage = (Stage) goBack.getScene().getWindow();
-		Parent root = FXMLLoader.load(getClass().getResource("main-view.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("student-view.fxml"));
 		root.getStylesheets().add(getClass().getResource("/com/example/quizmanagement/styles.css").toExternalForm());
 		primaryStage.setTitle("Online Java Quiz Management System");
 		primaryStage.setScene(new Scene(root, 400, 600));
@@ -124,6 +127,24 @@ public class QuizController implements Initializable {
 			} else {
 				quizBox.getChildren().clear();
 				btnContainer.getChildren().remove(nextButton);
+				Button reportButton = new Button("Show report");
+				reportButton.setId("purple-button");
+				reportButton.setOnAction(new EventHandler<ActionEvent>() {
+					@Override
+					public void handle(ActionEvent actionEvent) {
+						try {
+							Stage primaryStage = (Stage) goBack.getScene().getWindow();
+							Parent root = FXMLLoader.load(getClass().getResource("student-report-view.fxml"));
+							root.getStylesheets().add(getClass().getResource("/com/example/quizmanagement/styles.css").toExternalForm());
+							primaryStage.setTitle("Online Java Quiz Management System");
+							primaryStage.setScene(new Scene(root, 400, 600));
+							primaryStage.show();
+						} catch (Exception e) {
+							System.out.println(e);
+						}
+					}
+				});
+				btnContainer.getChildren().add(reportButton);
 				ObservableList<PieChart.Data> pieChartData =
 								FXCollections.observableArrayList(
 												new PieChart.Data("Correct " + String.valueOf(Math.round((result / qsSize) * 100) + "% (" + Math.round(result) +
@@ -133,6 +154,7 @@ public class QuizController implements Initializable {
 																"% (" + Math.round(qsSize - result) + ")"),
 																(((qsSize - result) / qsSize) * 100)));
 				final PieChart chart = new PieChart(pieChartData);
+				st.executeUpdate("INSERT INTO `result`(`name`, `date`, `mark`) VALUES ('" + Credentials.getUsername() + "','" + new SimpleDateFormat("dd-MMM hh:mm aa").format(new Date()) + "','" + Math.round(result) + "/" + Math.round(qsSize) + "')");
 				chart.setAnimated(true);
 				chart.setLabelsVisible(false);
 				chart.setTitle("Quiz result");
