@@ -20,7 +20,7 @@ import java.sql.Statement;
 
 public class LoginController {
 	@FXML
-	private TextField username, pass;
+	private TextField email, pass;
 	@FXML
 	private Label error;
 
@@ -30,7 +30,7 @@ public class LoginController {
 	@FXML
 	private void onLogin() {
 		try {
-			if (username.getText().equals("") || pass.getText().equals("")) {
+			if (email.getText().equals("") || pass.getText().equals("")) {
 				error.setText("Please fill all fields");
 			} else {
 				MessageDigest md = MessageDigest.getInstance("MD5");
@@ -43,13 +43,12 @@ public class LoginController {
 				Class.forName("com.mysql.jdbc.Driver");
 				Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/quiz", "root", "");
 				Statement st = con.createStatement();
-				ResultSet rs = st.executeQuery("select * from `users` where `username` = '" + username.getText() + "' and " +
+				ResultSet rs = st.executeQuery("select * from `users` where `email` = '" + email.getText() + "' and " +
 								"`password` = " + "'" + hashedPass + "'");
 				if (rs != null && rs.next()) {
-					Credentials.setUsername(username.getText());
-					Stage primaryStage = (Stage) cancel.getScene().getWindow();
-					Parent root;
-					root = rs.getString("admin").equals("1") ? FXMLLoader.load(getClass().getResource("teacher-view.fxml")) :
+					Credentials.setUsername(rs.getString("username"));
+					Stage primaryStage = (Stage) login.getScene().getWindow();
+					Parent root = rs.getString("admin").equals("1") ? FXMLLoader.load(getClass().getResource("teacher-view.fxml")) :
 									FXMLLoader.load(getClass().getResource("student-view.fxml"));
 					root.getStylesheets().add(getClass().getResource("/com/example/quizmanagement/styles.css").toExternalForm());
 					primaryStage.setTitle("Online Java Quiz Management System");
@@ -62,18 +61,10 @@ public class LoginController {
 
 		} catch (Exception e) {
 			error.setText("Error connecting to database");
+			System.out.println(e);
 		}
 	}
 
-	@FXML
-	private void onCancel() throws Exception {
-		Stage primaryStage = (Stage) cancel.getScene().getWindow();
-		Parent root = FXMLLoader.load(getClass().getResource("loginstudent-view.fxml"));
-		root.getStylesheets().add(getClass().getResource("/com/example/quizmanagement/styles.css").toExternalForm());
-		primaryStage.setTitle("Online Java Quiz Management System");
-		primaryStage.setScene(new Scene(root, 400, 600));
-		primaryStage.show();
-	}
 
 	@FXML
 	private void setOnKeyPressed(KeyEvent k) throws Exception {
