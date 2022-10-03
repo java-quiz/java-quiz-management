@@ -52,14 +52,13 @@ public class ManageController implements Initializable {
 	}
 
 	@FXML
-	private void deleteQs() {
-		//		Object qsPos = table.getSelectionModel().getSelectedCells().get(0);
-		//		int row = qsPos.getRow();
-		//		TableView item = table.getItems().get(row);
-		//		ResultTable ques = table.getSelectionModel().getSelectedItem();
-		//		System.out.println(ques);
-		table.getItems().removeAll(table.getSelectionModel().getSelectedItem());
-		//										System.out.println(qs);
+	private void deleteQs() throws Exception {
+		Class.forName("com.mysql.jdbc.Driver");
+		Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/quiz", "root", "");
+		Statement st = con.createStatement();
+		int rs = st.executeUpdate("DELETE from quiz_list");
+		if (rs == 1)
+			table.getItems().clear();
 	}
 
 	@Override
