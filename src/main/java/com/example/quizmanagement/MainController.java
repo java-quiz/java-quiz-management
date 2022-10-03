@@ -9,10 +9,17 @@ import javafx.stage.Stage;
 
 public class MainController {
 	@FXML
-	private Button addButton;
+	private Button testButton, addButton;
 
 	@FXML
-	private Button testButton;
+	private void onClickAccButton() throws Exception {
+		Stage primaryStage = (Stage) addButton.getScene().getWindow();
+		Parent root = FXMLLoader.load(getClass().getResource("add-acc-view.fxml"));
+		primaryStage.setTitle("Add accounts");
+		root.getStylesheets().add(getClass().getResource("/com/example/quizmanagement/styles.css").toExternalForm());
+		primaryStage.setScene(new Scene(root, 400, 600));
+		primaryStage.show();
+	}
 
 	@FXML
 	private void onClickAddButton() throws Exception {
