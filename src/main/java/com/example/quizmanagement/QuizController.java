@@ -13,9 +13,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.*;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Priority;
-import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -40,9 +39,11 @@ public class QuizController implements Initializable {
 	@FXML
 	private Button goBack, nextButton;
 	@FXML
-	private Label question, report, corLab, wrnLab;
+	private Label question, report;
 	@FXML
-	private HBox opBox1, opBox2, btnContainer;
+	private HBox btnContainer;
+	@FXML
+	private GridPane opBox;
 	@FXML
 	private ProgressBar pb;
 
@@ -70,12 +71,15 @@ public class QuizController implements Initializable {
 		quizBox.getChildren().clear();
 		question.setText(rs.getString("question"));
 		quizBox.getChildren().add(question);
-		opBox1.getChildren().clear();
-		opBox2.getChildren().clear();
+		opBox.getChildren().clear();
 		RadioButton o1 = new RadioButton(rs.getString("option1"));
+		o1.wrapTextProperty().set(true);
 		RadioButton o2 = new RadioButton(rs.getString("option2"));
+		o2.wrapTextProperty().set(true);
 		RadioButton o3 = new RadioButton(rs.getString("option3"));
+		o3.wrapTextProperty().set(true);
 		RadioButton o4 = new RadioButton(rs.getString("option4"));
+		o4.wrapTextProperty().set(true);
 		ToggleGroup optionGroup = new ToggleGroup();
 		optionGroup.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
 			@Override
@@ -88,19 +92,11 @@ public class QuizController implements Initializable {
 		o2.setToggleGroup(optionGroup);
 		o3.setToggleGroup(optionGroup);
 		o4.setToggleGroup(optionGroup);
-		opBox1.getChildren().add(o1);
-		Region region1 = new Region();
-		HBox.setHgrow(region1, Priority.ALWAYS);
-		opBox1.getChildren().add(region1);
-		opBox1.getChildren().add(o2);
-
-		opBox2.getChildren().add(o3);
-		Region region2 = new Region();
-		HBox.setHgrow(region2, Priority.ALWAYS);
-		opBox2.getChildren().add(region2);
-		opBox2.getChildren().add(o4);
-		quizBox.getChildren().add(opBox1);
-		quizBox.getChildren().add(opBox2);
+		opBox.add(o1, 0, 0);
+		opBox.add(o2, 1, 0);
+		opBox.add(o3, 0, 1);
+		opBox.add(o4, 1, 1);
+		quizBox.getChildren().add(opBox);
 
 	}
 
