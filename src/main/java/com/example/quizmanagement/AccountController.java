@@ -19,6 +19,7 @@ import java.security.MessageDigest;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
+import java.util.regex.Pattern;
 
 public class AccountController {
 	@FXML
@@ -46,15 +47,19 @@ public class AccountController {
 				while (hashedPass.length() < 32) {
 					hashedPass = "0" + hashedPass;
 				}
-				Class.forName("com.mysql.jdbc.Driver");
-				Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/quiz", "root", "");
-				Statement st = con.createStatement();
-				int rs = st.executeUpdate("INSERT INTO `users`(`username`, `email`, `password`, `admin`) VALUES ('" + username.getText() + "','" + email.getText() + "','" + hashedPass + "','0')");
-				if (rs == 1) {
-					container.getChildren().clear();
-					container.getChildren().add(new Label("Question added successfully"));
-					container.getChildren().add(back);
-					container.setAlignment(Pos.CENTER);
+				if (Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE).matcher(email.getText()).find()) {
+					Class.forName("com.mysql.jdbc.Driver");
+					Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/quiz", "root", "");
+					Statement st = con.createStatement();
+					int rs = st.executeUpdate("INSERT INTO `users`(`username`, `email`, `password`, `admin`) VALUES ('" + username.getText() + "','" + email.getText() + "','" + hashedPass + "','0')");
+					if (rs == 1) {
+						container.getChildren().clear();
+						container.getChildren().add(new Label("Account added successfully"));
+						container.getChildren().add(back);
+						container.setAlignment(Pos.CENTER);
+					}
+				} else {
+					error.setText("Invalid email address");
 				}
 			}
 
@@ -74,7 +79,7 @@ public class AccountController {
 	}
 
 	@FXML
-	private void setOnKeyPressed(KeyEvent k) throws Exception {
+	private void setOnKeyPressed(KeyEvent k) {
 		if (k.getCode().equals(KeyCode.ENTER)) {
 			onCreate();
 		}
