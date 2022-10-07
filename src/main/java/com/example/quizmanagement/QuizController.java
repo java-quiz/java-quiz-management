@@ -154,7 +154,8 @@ public class QuizController implements Initializable {
 																"% (" + Math.round(qsSize - result) + ")"),
 																(((qsSize - result) / qsSize) * 100)));
 				final PieChart chart = new PieChart(pieChartData);
-				st.executeUpdate("INSERT INTO `result`(`name`, `date`, `mark`) VALUES ('" + Credentials.getUsername() + "','" + new SimpleDateFormat("dd-MMM hh:mm aa").format(new Date()) + "','" + Math.round(result) + "/" + Math.round(qsSize) + "')");
+				st.executeUpdate("INSERT INTO `result`(`name`, `email`, `date`, `mark`) VALUES ('" + Credentials.getUsername() + "','" + Credentials.getEmail() + "'," +
+								"'" + new SimpleDateFormat("dd-MMM hh:mm aa").format(new Date()) + "','" + Math.round(result) + "/" + Math.round(qsSize) + "')");
 				chart.setAnimated(true);
 				chart.setLabelsVisible(false);
 				chart.setTitle("Quiz result");

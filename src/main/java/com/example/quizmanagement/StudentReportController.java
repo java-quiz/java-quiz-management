@@ -55,7 +55,7 @@ public class StudentReportController implements Initializable {
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/quiz", "root", "");
 			Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery("Select * from `result` where result.name = '" + Credentials.getUsername() + "'");
+			ResultSet rs = st.executeQuery("Select * from `result` where result.email = '" + Credentials.getEmail() + "'");
 			while (rs.next()) {
 				table.getItems().add(new ResultTable(rs.getString("name"), rs.getString("date"), rs.getString("mark")));
 			}

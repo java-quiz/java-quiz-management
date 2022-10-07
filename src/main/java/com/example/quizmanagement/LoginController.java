@@ -47,6 +47,7 @@ public class LoginController {
 								"`password` = " + "'" + hashedPass + "'");
 				if (rs != null && rs.next()) {
 					Credentials.setUsername(rs.getString("username"));
+					Credentials.setEmail(rs.getString("email"));
 					Stage primaryStage = (Stage) login.getScene().getWindow();
 					Parent root = rs.getString("admin").equals("1") ? FXMLLoader.load(getClass().getResource("teacher-view.fxml")) :
 									FXMLLoader.load(getClass().getResource("student-view.fxml"));
@@ -61,7 +62,6 @@ public class LoginController {
 
 		} catch (Exception e) {
 			error.setText("Error connecting to database");
-			System.out.println(e);
 		}
 	}
 
