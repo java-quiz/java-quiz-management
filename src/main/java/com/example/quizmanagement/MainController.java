@@ -2,14 +2,21 @@ package com.example.quizmanagement;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
-public class MainController {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class MainController implements Initializable {
 	@FXML
 	private Button testButton, addButton;
+	@FXML
+	private Label wcLbl;
 
 	@FXML
 	private void onClickAccButton() throws Exception {
@@ -63,4 +70,8 @@ public class MainController {
 		primaryStage.show();
 	}
 
+	@Override
+	public void initialize(URL url, ResourceBundle resourceBundle) {
+		wcLbl.setText("Welcome, " + Credentials.getUsername());
+	}
 }
