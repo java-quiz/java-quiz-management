@@ -30,7 +30,7 @@ public class TeacherReportController implements Initializable {
 		Stage primaryStage = (Stage) exitButton.getScene().getWindow();
 		Parent root = FXMLLoader.load(getClass().getResource("teacher-view.fxml"));
 		root.getStylesheets().add(getClass().getResource("/com/example/quizmanagement/styles.css").toExternalForm());
-		primaryStage.setTitle("Online Quiz Management System");
+		primaryStage.setTitle("Online Quiz Management");
 		primaryStage.setScene(new Scene(root, 400, 600));
 		primaryStage.show();
 	}

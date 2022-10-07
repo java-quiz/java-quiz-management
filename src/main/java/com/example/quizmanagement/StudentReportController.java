@@ -6,6 +6,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -23,6 +24,8 @@ public class StudentReportController implements Initializable {
 	@FXML
 	private Button exitButton;
 	@FXML
+	private Label wcLbl;
+	@FXML
 	private VBox tableCon;
 
 	@FXML
@@ -30,13 +33,14 @@ public class StudentReportController implements Initializable {
 		Stage primaryStage = (Stage) exitButton.getScene().getWindow();
 		Parent root = FXMLLoader.load(getClass().getResource("student-view.fxml"));
 		root.getStylesheets().add(getClass().getResource("/com/example/quizmanagement/styles.css").toExternalForm());
-		primaryStage.setTitle("Test");
+		primaryStage.setTitle("Online Quiz");
 		primaryStage.setScene(new Scene(root, 400, 600));
 		primaryStage.show();
 	}
 
 	@Override
 	public void initialize(URL url, ResourceBundle resourceBundle) {
+		wcLbl.setText(Credentials.getUsername() + "'s result");
 		TableView table = new TableView<ResultTable>();
 		TableColumn nmCol = new TableColumn<ResultTable, String>("Name");
 		TableColumn dtCol = new TableColumn<ResultTable, String>("Date");
