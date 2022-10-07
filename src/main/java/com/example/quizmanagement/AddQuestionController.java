@@ -35,7 +35,7 @@ public class AddQuestionController implements Initializable {
 		Stage primaryStage = (Stage) goBack.getScene().getWindow();
 		Parent root = FXMLLoader.load(getClass().getResource("manage-view.fxml"));
 		root.getStylesheets().add(getClass().getResource("/com/example/quizmanagement/styles.css").toExternalForm());
-		primaryStage.setTitle("Online Java Quiz Management System");
+		primaryStage.setTitle("Manage questions");
 		primaryStage.setScene(new Scene(root, 400, 600));
 		primaryStage.show();
 	}
@@ -56,7 +56,7 @@ public class AddQuestionController implements Initializable {
 				Stage primaryStage = (Stage) goBack.getScene().getWindow();
 				Parent root = FXMLLoader.load(getClass().getResource("manage-view.fxml"));
 				root.getStylesheets().add(getClass().getResource("/com/example/quizmanagement/styles.css").toExternalForm());
-				primaryStage.setTitle("Test");
+				primaryStage.setTitle("Manage questions");
 				primaryStage.setScene(new Scene(root, 400, 600));
 				primaryStage.show();
 			}

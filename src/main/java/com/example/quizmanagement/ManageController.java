@@ -6,7 +6,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -28,15 +27,13 @@ public class ManageController implements Initializable {
 	private Button addButton;
 	@FXML
 	private VBox tableCon;
-	@FXML
-	private Label username;
 
 	@FXML
 	private void onAdd() throws Exception {
 		Stage primaryStage = (Stage) addButton.getScene().getWindow();
 		Parent root = FXMLLoader.load(getClass().getResource("add-view.fxml"));
 		root.getStylesheets().add(getClass().getResource("/com/example/quizmanagement/styles.css").toExternalForm());
-		primaryStage.setTitle("Test");
+		primaryStage.setTitle("Add new question");
 		primaryStage.setScene(new Scene(root, 400, 600));
 		primaryStage.show();
 	}
@@ -46,7 +43,7 @@ public class ManageController implements Initializable {
 		Stage primaryStage = (Stage) addButton.getScene().getWindow();
 		Parent root = FXMLLoader.load(getClass().getResource("teacher-view.fxml"));
 		root.getStylesheets().add(getClass().getResource("/com/example/quizmanagement/styles.css").toExternalForm());
-		primaryStage.setTitle("Test");
+		primaryStage.setTitle("Online Quiz Management");
 		primaryStage.setScene(new Scene(root, 400, 600));
 		primaryStage.show();
 	}
@@ -63,7 +60,6 @@ public class ManageController implements Initializable {
 
 	@Override
 	public void initialize(URL url, ResourceBundle resourceBundle) {
-		username.setText("Welcome, " + Credentials.getUsername());
 		qsCol.setCellValueFactory(new PropertyValueFactory<QuestionTable, String>("Question"));
 		crCol.setCellValueFactory(new PropertyValueFactory<QuestionTable, String>("Answer"));
 		crCol.setStyle("-fx-alignment:CENTER");

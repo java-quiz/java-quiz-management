@@ -22,7 +22,7 @@ public class MainController implements Initializable {
 	private void onClickAccButton() throws Exception {
 		Stage primaryStage = (Stage) addButton.getScene().getWindow();
 		Parent root = FXMLLoader.load(getClass().getResource("add-acc-view.fxml"));
-		primaryStage.setTitle("Add accounts");
+		primaryStage.setTitle("Add new accounts");
 		root.getStylesheets().add(getClass().getResource("/com/example/quizmanagement/styles.css").toExternalForm());
 		primaryStage.setScene(new Scene(root, 400, 600));
 		primaryStage.show();
@@ -32,7 +32,7 @@ public class MainController implements Initializable {
 	private void onClickAddButton() throws Exception {
 		Stage primaryStage = (Stage) addButton.getScene().getWindow();
 		Parent root = FXMLLoader.load(getClass().getResource("manage-view.fxml"));
-		primaryStage.setTitle("Add question");
+		primaryStage.setTitle("Manage questions");
 		root.getStylesheets().add(getClass().getResource("/com/example/quizmanagement/styles.css").toExternalForm());
 		primaryStage.setScene(new Scene(root, 400, 600));
 		primaryStage.show();
@@ -43,7 +43,7 @@ public class MainController implements Initializable {
 		Stage primaryStage = (Stage) testButton.getScene().getWindow();
 		Parent root = FXMLLoader.load(getClass().getResource("student-report-view.fxml"));
 		root.getStylesheets().add(getClass().getResource("/com/example/quizmanagement/styles.css").toExternalForm());
-		primaryStage.setTitle("Test");
+		primaryStage.setTitle("Student's report");
 		primaryStage.setScene(new Scene(root, 400, 600));
 		primaryStage.show();
 
@@ -54,7 +54,7 @@ public class MainController implements Initializable {
 		Stage primaryStage = (Stage) testButton.getScene().getWindow();
 		Parent root = FXMLLoader.load(getClass().getResource("teacher-report-view.fxml"));
 		root.getStylesheets().add(getClass().getResource("/com/example/quizmanagement/styles.css").toExternalForm());
-		primaryStage.setTitle("Test");
+		primaryStage.setTitle("All student's report");
 		primaryStage.setScene(new Scene(root, 400, 600));
 		primaryStage.show();
 
@@ -65,7 +65,7 @@ public class MainController implements Initializable {
 		Stage primaryStage = (Stage) testButton.getScene().getWindow();
 		Parent root = FXMLLoader.load(getClass().getResource("quiz-view.fxml"));
 		root.getStylesheets().add(getClass().getResource("/com/example/quizmanagement/styles.css").toExternalForm());
-		primaryStage.setTitle("Test");
+		primaryStage.setTitle("Quiz");
 		primaryStage.setScene(new Scene(root, 400, 600));
 		primaryStage.show();
 	}

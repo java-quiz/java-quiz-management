@@ -52,7 +52,7 @@ public class LoginController {
 					Parent root = rs.getString("admin").equals("1") ? FXMLLoader.load(getClass().getResource("teacher-view.fxml")) :
 									FXMLLoader.load(getClass().getResource("student-view.fxml"));
 					root.getStylesheets().add(getClass().getResource("/com/example/quizmanagement/styles.css").toExternalForm());
-					primaryStage.setTitle("Online Java Quiz Management System");
+					primaryStage.setTitle(rs.getString("admin").equals("1") ? "Online Quiz Management" : "Online Quiz");
 					primaryStage.setScene(new Scene(root, 400, 600));
 					primaryStage.show();
 				} else {
