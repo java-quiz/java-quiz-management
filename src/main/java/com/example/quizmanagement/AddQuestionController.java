@@ -3,7 +3,6 @@ package com.example.quizmanagement;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -47,16 +46,19 @@ public class AddQuestionController implements Initializable {
 			error.setText("Please fill all the fields");
 		} else if (!cro.getText().equals(op1.getText()) && !cro.getText().equals(op2.getText()) && !cro.getText().equals(op3.getText()) && !cro.getText().equals(op4.getText())) {
 			error.setText("Correct ans doesn't match any of the above options");
-			System.out.println(op1.getText() + op2.getText() + op3.getText() + op4.getText() + cro.getText());
+		} else if (op1.getText().equals(op2.getText()) || op1.getText().equals(op3.getText()) || op1.getText().equals(op4.getText()) || op2.getText().equals(op3.getText()) || op2.getText().equals(op4.getText()) || op3.getText().equals(op4.getText())) {
+			error.setText("Multiple options match each other");
 		} else {
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/quiz", "root", "");
 			Statement st = con.createStatement();
 			if (st.executeUpdate("INSERT INTO `quiz_list` (`Question`, `option1`, `option2`, `option3`, `option4`, `correct`) VALUES ('" + question.getText() + "', '" + op1.getText() + "', '" + op2.getText() + "', '" + op3.getText() + "', '" + op4.getText() + "', '" + cro.getText() + "');") == 1) {
-				container.getChildren().clear();
-				container.getChildren().add(new Label("Question added successfully"));
-				container.getChildren().add(goBack);
-				container.setAlignment(Pos.CENTER);
+				Stage primaryStage = (Stage) goBack.getScene().getWindow();
+				Parent root = FXMLLoader.load(getClass().getResource("manage-view.fxml"));
+				root.getStylesheets().add(getClass().getResource("/com/example/quizmanagement/styles.css").toExternalForm());
+				primaryStage.setTitle("Test");
+				primaryStage.setScene(new Scene(root, 400, 600));
+				primaryStage.show();
 			}
 		}
 
