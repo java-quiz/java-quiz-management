@@ -67,7 +67,7 @@ public class LoginController {
 
 
 	@FXML
-	private void setOnKeyPressed(KeyEvent k) throws Exception {
+	private void setOnKeyPressed(KeyEvent k) {
 		if (k.getCode().equals(KeyCode.ENTER)) {
 			onLogin();
 		}

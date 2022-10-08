@@ -71,6 +71,7 @@ public class QuizController implements Initializable {
 		quizBox.getChildren().clear();
 		question.setText(rs.getString("question"));
 		quizBox.getChildren().add(question);
+		question.wrapTextProperty().set(true);
 		opBox.getChildren().clear();
 		RadioButton o1 = new RadioButton(rs.getString("option1"));
 		o1.wrapTextProperty().set(true);
