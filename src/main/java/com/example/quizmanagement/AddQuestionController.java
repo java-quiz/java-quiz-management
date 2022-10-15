@@ -2,31 +2,25 @@ package com.example.quizmanagement;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
-import java.util.ResourceBundle;
 
-public class AddQuestionController implements Initializable {
+public class AddQuestionController {
 	@FXML
 	private Button goBack;
 	@FXML
-	private Label error, username;
+	private Label error;
 	@FXML
 	private TextArea question;
-	@FXML
-	private VBox container;
 	@FXML
 	private TextField op1, op2, op3, op4, cro;
 
@@ -62,10 +56,5 @@ public class AddQuestionController implements Initializable {
 			}
 		}
 
-	}
-
-	@Override
-	public void initialize(URL url, ResourceBundle resourceBundle) {
-		username.setText("Welcome, " + Credentials.getUsername());
 	}
 }

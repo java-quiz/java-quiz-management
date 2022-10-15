@@ -70,6 +70,18 @@ public class MainController implements Initializable {
 		primaryStage.show();
 	}
 
+	@FXML
+	private void onLogout() throws Exception {
+		Credentials.setUsername("");
+		Credentials.setEmail("");
+		Stage primaryStage = (Stage) testButton.getScene().getWindow();
+		Parent root = FXMLLoader.load(getClass().getResource("login-view.fxml"));
+		root.getStylesheets().add(getClass().getResource("/com/example/quizmanagement/styles.css").toExternalForm());
+		primaryStage.setTitle("Login");
+		primaryStage.setScene(new Scene(root, 400, 600));
+		primaryStage.show();
+	}
+
 	@Override
 	public void initialize(URL url, ResourceBundle resourceBundle) {
 		wcLbl.setText("Welcome, " + Credentials.getUsername());

@@ -46,7 +46,7 @@
 						<Insets right="10.0"/>
 					</HBox.margin>
 				</Button>
-				<Button id="purple-button" mnemonicParsing="false" onAction="#onCreate" text="Create account">
+				<Button id="purple-button" mnemonicParsing="false" onAction="#onCreate" text="Create">
 					<HBox.margin>
 						<Insets left="10.0"/>
 					</HBox.margin>

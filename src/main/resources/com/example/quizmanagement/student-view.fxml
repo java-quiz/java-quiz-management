@@ -5,7 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.Font?>
 <VBox xmlns:fx="http://javafx.com/fxml/1" alignment="CENTER" prefHeight="589.0" prefWidth="788.0"
@@ -40,7 +40,24 @@
 			<Image url="@../../../img/quiz.png"/>
 		</image>
 	</ImageView>
+	<HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+		<children>
 
-	<Button id="blue-button" fx:id="testButton" onAction="#onClickTestButton" text="Take test"/>
-	<Button id="purple-button" fx:id="addButton" onAction="#onClickReportButton" text="View report"/>
+			<Button id="blue-button" fx:id="testButton" onAction="#onClickTestButton" text="Take test">
+				<HBox.margin>
+					<Insets right="5.0"/>
+				</HBox.margin>
+			</Button>
+			<Button id="purple-button" fx:id="addButton" onAction="#onClickReportButton" text="View report">
+				<HBox.margin>
+					<Insets left="5.0"/>
+				</HBox.margin>
+			</Button>
+		</children>
+	</HBox>
+	<HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+		<children>
+			<Button id="red-button" mnemonicParsing="false" onAction="#onLogout" text="Logout"/>
+		</children>
+	</HBox>
 </VBox>

@@ -13,6 +13,18 @@
 	-fx-text-fill: white;
 }
 
+.button {
+    -fx-pref-width: 100px;
+    -fx-pref-height: 20px;
+}
+
+#green-button{
+	-fx-border-width: 0px;
+	-fx-background-color: #66b266;
+	-fx-background-radius: 10px;
+	-fx-padding: 8px;
+	-fx-text-fill: white;
+}
 #red-button{
 	-fx-border-width: 0px;
 	-fx-background-color: red;
